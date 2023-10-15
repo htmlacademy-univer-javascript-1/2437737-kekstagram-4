@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-let checkLength = function (inputString,maxLength)
+const checkLength = function (inputString,maxLength)
 {
   if (inputString.length <= maxLength)
   {
@@ -11,7 +11,8 @@ let checkLength = function (inputString,maxLength)
   }
 };
 
-let isPolindrom = function (inputString)
+// eslint-disable-next-line no-unused-vars
+const isPolindrom = function (inputString)
 {
   let newString = inputString;
 
@@ -22,12 +23,13 @@ let isPolindrom = function (inputString)
 
   for(let i = newString.length - 1; i >= 0; i--)
   {
-    let stringSymbol = newString[i];
+    const stringSymbol = newString[i];
     reverseString += stringSymbol;
   }
   return reverseString === newString;
 };
 
+// eslint-disable-next-line no-unused-vars
 const onlyPositiveInt = function(inputString)
 {
   let newString = inputString;
@@ -36,20 +38,20 @@ const onlyPositiveInt = function(inputString)
 
   for(let i = 0; i <= newString.length; i++)
   {
-    let temporarySymbol = parseInt(newString[i]);
+    const temporarySymbol = parseInt(newString[i], 10);
     if(!isNaN(temporarySymbol))
     {
       result += newString[i];
     }
   }
 
-  if(result.length == 0)
+  if(result.length === 0)
   {
     return NaN;
   }
 
   else
   {
-    return parseInt(result);
+    return parseInt(result, 10);
   }
 };
