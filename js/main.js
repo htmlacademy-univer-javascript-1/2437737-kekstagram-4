@@ -1,8 +1,8 @@
-const amountOfImages = 6;
-const amountOfPosts = 25;
-const minLike = 15;
-const maxLike = 200;
-const varietyOfMessages =
+const AMOUNT_OF_IMAGES = 6;
+const AMOUNT_OF_POSTS = 25;
+const MIN_LIKE = 15;
+const MAX_LIKE = 200;
+const VARIETY_OF_MESSAGES =
 [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -11,7 +11,7 @@ const varietyOfMessages =
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
-const varietyOfDescriptions =
+const VARIETY_OF_DESCRIPTION =
 [
   'Ауф...',
   'Как вам?',
@@ -47,11 +47,11 @@ const generateArrayOfComments = (count) =>
   const arrayOfComments = [];
 
   for(let commentId = 1; commentId <= count; commentId++){
-    const avatar = `img/avatar-${getRandomInt(1,amountOfImages)}.svg`;
+    const avatar = `img/avatar-${getRandomInt(1,AMOUNT_OF_IMAGES)}.svg`;
     const comment = {
       id : commentId,
       avatar : avatar,
-      message : varietyOfMessages[getRandomInt(0,varietyOfMessages.length -1)],
+      message : VARIETY_OF_MESSAGES[getRandomInt(0,VARIETY_OF_MESSAGES.length -1)],
       name : varietyOfNames[getRandomInt(0,varietyOfNames.length -1)],
     };
 
@@ -70,8 +70,8 @@ const createArrayOfPosts = (count) =>
   {
     id: userId,
     url: `photos/${arrayOfUniqUrl[localUrl]}.png`,
-    description: varietyOfDescriptions[getRandomInt(0,varietyOfDescriptions.length -1)],
-    likes: getRandomInt(minLike,maxLike),
+    description: VARIETY_OF_DESCRIPTION[getRandomInt(0,VARIETY_OF_DESCRIPTION.length -1)],
+    likes: getRandomInt(MIN_LIKE,MAX_LIKE),
     comments: generateArrayOfComments(getRandomInt(0,30)),
   };
     arrayOfUniqUrl.splice(localUrl,1);
@@ -80,4 +80,4 @@ const createArrayOfPosts = (count) =>
   return arrayOfPosts;
 };
 // eslint-disable-next-line no-unused-vars
-const listOfPosts = createArrayOfPosts(amountOfPosts);
+const listOfPosts = createArrayOfPosts(AMOUNT_OF_POSTS);
