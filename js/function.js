@@ -1,57 +1,19 @@
-// eslint-disable-next-line no-unused-vars
-const checkLength = function (inputString,maxLength)
-{
-  if (inputString.length <= maxLength)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+const convertToMinutes = (inputString) => {
+  inputString = inputString.split(':');
+  const minutes = Number(inputString[0])*60 + Number(inputString[1]);
+  return minutes;
 };
 
 // eslint-disable-next-line no-unused-vars
-const isPolindrom = function (inputString)
+const meetIsPossible  = (WORK_DAY_START , WORK_DAY_END, MEET_START, TIME_OF_MEET) =>
 {
-  let newString = inputString;
-
-  newString = newString.replaceAll(' ','');
-  newString = newString.toLowerCase();
-
-  let reverseString = '';
-
-  for(let i = newString.length - 1; i >= 0; i--)
+  WORK_DAY_START = convertToMinutes(WORK_DAY_START);
+  WORK_DAY_END = convertToMinutes(WORK_DAY_END);
+  MEET_START = convertToMinutes(MEET_START);
+  if ((MEET_START - WORK_DAY_START ) >= 0)
   {
-    const stringSymbol = newString[i];
-    reverseString += stringSymbol;
+    if ( (WORK_DAY_END - MEET_START) >= TIME_OF_MEET ){return true;}
+    else{return false;}
   }
-  return reverseString === newString;
-};
-
-// eslint-disable-next-line no-unused-vars
-const onlyPositiveInt = function(inputString)
-{
-  let newString = inputString;
-  newString = newString.replaceAll(' ','');
-  let result = '';
-
-  for(let i = 0; i <= newString.length; i++)
-  {
-    const temporarySymbol = parseInt(newString[i], 10);
-    if(!isNaN(temporarySymbol))
-    {
-      result += newString[i];
-    }
-  }
-
-  if(result.length === 0)
-  {
-    return NaN;
-  }
-
-  else
-  {
-    return parseInt(result, 10);
-  }
+  else{return false;}
 };
