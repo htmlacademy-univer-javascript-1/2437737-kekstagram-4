@@ -23,7 +23,6 @@ export const showAlert = (message) => {
   alertContainer.style.backgroundColor = 'red';
   alertContainer.style.borderRadius = '5px';
 
-
   alertContainer.textContent = message;
   document.body.append(alertContainer);
 
