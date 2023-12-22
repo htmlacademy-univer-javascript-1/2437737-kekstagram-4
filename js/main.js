@@ -1,3 +1,4 @@
-import {getPictures} from './data.js';
+import './util.js';
+import {listOfPosts} from './data.js';
 import {renderThumbnails} from './thumbnail.js';
-renderThumbnails(getPictures());
+
