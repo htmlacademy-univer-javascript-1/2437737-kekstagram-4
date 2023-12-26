@@ -49,7 +49,7 @@ const showSuccessMessage = () => {
 };
 
 const showErrorMessage = () => {
-  showMessage(errorAlertElement, ERROR_BUTTON_SELECTOR);
+  showMessage(errorAlertElement,ERROR_BUTTON_SELECTOR);
 };
 
 export {showSuccessMessage, showErrorMessage};
