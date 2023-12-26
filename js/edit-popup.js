@@ -3,7 +3,7 @@ import { showErrorMessage, showSuccessMessage } from './response.js';
 import { Effect, PERCENT_DIVIDE, MIN_SCALE, MAX_SCALE, SCALE_STEP,
   SubmitButtonText, bodyElement, inputUploadElement, formElement } from './consts.js';
 import { isEscapeKey } from './utils.js';
-import { pristine, isValidFileType, isTextFieldFocused } from './validator.js';
+import { pristine,isValidFileType, isTextFieldFocused } from './validator.js';
 
 const overlayElement = bodyElement.querySelector('.img-upload__overlay');
 const cancelButtonElement = overlayElement.querySelector('.img-upload__cancel');
@@ -12,6 +12,7 @@ const zoomOutElement = overlayElement.querySelector('.scale__control--smaller');
 const zoomInElement = overlayElement.querySelector('.scale__control--bigger');
 const scaleValueElement = overlayElement.querySelector('.scale__control--value');
 const previewElement = document.querySelector('.img-upload__preview img');
+const effectPreviews = document.querySelectorAll('.effects__preview');
 
 const effectsElement = document.querySelector('.effects');
 const sliderElement = document.querySelector('.effect-level__slider');
@@ -22,9 +23,19 @@ const submitButtonElement = formElement.querySelector('.img-upload__submit');
 const DEFAULT_EFFECT = Effect['NONE'];
 
 let chosenEffect = DEFAULT_EFFECT;
+//previewElement = picturePreview
 
 const loadPicture = () => {
   previewElement.src = URL.createObjectURL(inputUploadElement.files[0]);
+};
+
+
+const loadEffectPreview = () => {
+  const file = inputUploadElement.files[0];
+  const fileUrl = URL.createObjectURL(file);
+  effectPreviews.forEach((effect) => {
+    effect.style.backgroundImage = `url(${fileUrl})`;
+  });
 };
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
@@ -169,6 +180,7 @@ const onInputUploadElementChange = () => {
   if (isValidFileType()){
     openEditPopup();
     loadPicture();
+    loadEffectPreview();
     initScale();
     initEffectsSlider();
   } else {

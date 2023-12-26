@@ -1,4 +1,5 @@
 // import { ALERT_SHOW_TIME } from './consts.js';
+import { TIMEOUT_DELAY } from './consts.js';
 export const ALERT_SHOW_TIME = 5000;
 export const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -36,7 +37,7 @@ export const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export const debounce = (callback, timeoutDelay = 500) => {
+export const debounce = (callback, timeoutDelay = TIMEOUT_DELAY) => {
   let timeoutId;
 
   return (...rest) => {
@@ -58,3 +59,4 @@ export const throttle = (callback, delayBetweenFrames) => {
 };
 
 export const shuffle = (data) => data.sort(() => Math.random() - 0.5);
+

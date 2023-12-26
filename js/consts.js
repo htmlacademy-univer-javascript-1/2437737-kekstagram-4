@@ -3,12 +3,13 @@ export const MAX_COUNT_RANDOM_PICTURE = 10;
 export const PHOTOS_AMOUNT = 25;
 export const ALERT_SHOW_TIME = 5000;
 export const VALID_SYMBOLS = /^#[a-zа-ё0-9]{1,19}$/i;
-export const FILE_TYPES = ['jpg', 'jpeg', 'png', 'PNG'];
+export const FILE_TYPES = ['jpg', 'jpeg', 'png', 'PNG', 'gif'];
 export const MAX_HASHTAG_COUNT = 5;
 export const SCALE_STEP = 25;
 export const MAX_SCALE = 100;
 export const MIN_SCALE = 25;
 export const PERCENT_DIVIDE = 100;
+export const TIMEOUT_DELAY = 500;
 
 export const bodyElement = document.querySelector('body');
 export const inputUploadElement = bodyElement.querySelector('.img-upload__input');
